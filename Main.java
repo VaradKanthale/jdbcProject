@@ -1,64 +1,30 @@
-package jdbc;
+package Family;
 
-import java.sql.SQLException;
-import java.util.Scanner;
+import java.io.IOException;
 
-public class Main {
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
-	public static void main(String[] args) throws SQLException {
-		// TODO Auto-generated method stub
+public class Main extends Application {
 
-		Operations connection2 = new Operations();
-		Connections connection=new Connections();
-		
-		
-    	connection2.FindStudentsWithProfileJoin();
-		
-	//	connection2.FindStudentsWithGroupByName();
+	@Override
+	public void start(Stage stage) throws Exception {
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("/Family/view/StudentInfo.fxml"));
 
-		connection.getConnection();
-		String createtable = connection2.Createtable();
-	//	System.out.println(createtable); 
-		
-		String createtable2 = connection2.Createtable2();
-	//	System.out.println(createtable2); 
-		
-		String name ="siddhe";
-		int salary= 25;
-	//	connection2.Insertdata(name , salary); 
-		
-		
-		String subject ="Hindi";
-		int password=1234;
-		int id=2;
-	//	connection2.Insertdata2(subject ,password , id);
+			Scene scene = new Scene(root);
+			stage.setScene(scene);
+			stage.setResizable(false);
+			stage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
-
-     //	connection2.Selectdata();
-
-	/*	Scanner sc=new Scanner(System.in);
-		String name=sc.next();
-		String name2=sc.next();
-
-		int updatedata = connection2.Updatedata(name , name2);
-		System.out.println(updatedata); */
-
-	//	int deletedata = connection2.Deletedata(5);
-	//	System.out.println(deletedata);
-		
-	/*	Scanner sc=new Scanner(System.in);
-		Long id=sc.nextLong();
-		 connection2.FindById(id); */
-		 
-	/*	 Scanner sc=new Scanner(System.in);
-			String name=sc.next();
-			 connection2.FindStudentsWithName(name);*/
-		
-	/*	if( findById != null) {
-			System.out.println(findById.getName()+" "+findById.getAge());
-		} */
-
-		// sc.close();
-		connection.getConnection().close();
+	public static void main(String[] args) {
+		launch(args);
 	}
 }
